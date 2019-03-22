@@ -1,0 +1,113 @@
+
+바이앱스 라라벨 프로젝트 코딩 규약
+==================================
+
+* 참고 사이트
+1. [Laravel 공식 사이트 Coding Style](https://laravel.com/docs/5.8/contributions#coding-style)  
+2. [쉽게 배우는 라라벨 5 프로그래밍 - PHP 5 의 특징 - PHP 표준 권고(PSR)](https://www.lesstif.com/pages/viewpage.action?pageId=24445325)
+3. [PHP Standards Recommendations](https://www.php-fig.org/psr/)
+4. [PSR-1 Basic Coding Standard 한글 번역](https://ujuc.github.io/2018/11/17/psr-1:_basic_coding_standard/)
+5. [PSR-2 Coding Style Guide 한글 번역](https://ujuc.github.io/2019/02/05/psr-2:_coding_style_guide/)
+
+---
+
+라라벨은 PSR-2 코딩 표준과 PSR-4 오토로딩 표준을 따릅니다. 따라서 본 문서는 이를 기반으로 작성합니다.
+
+문서 내에서 자주 쓰일 용어들은 원어보다는 (가급적) 외래어 표기법에 따른 한글로 표기합니다. 
+의미가 분명하지 않을 경우 괄호로 설명이나 원어를 기재합니다.
+
+---
+
+## 1. PSR 코딩 표준에 따른 기본 사항
+
+### 1.1 파일 
+
+- 파일은 BOM(Byte Order Mark)없는 UTF-8 인코딩을 사용한다.  
+- PHP만 포함된 파일에서는 닫는 태그(?>)는 사용하지 않는다.  
+- 파일은 반드시 하나의 빈 줄로 끝나야 한다.
+- namespace, class는 오토로딩 표준을 따른다.  
+
+### 1.2 라인과 공백
+
+- 들여쓰기는 탭이 아닌 공백 4칸을 사용한다.
+- 줄 길이는 80자 이하를 권장한다.
+- if, elseif 같은 제어 구문은 제어문 뒤에 공백 1개를 두고 괄호 안에 조건문을 기술한다.
+- 제어구문의 여는 괄호는 제어문과 같은 줄에 위치하고, 닫는 괄호는 본문 다음에 위치한다.
+- 함수나 메소드를 호출할 때는 함수명, 메소드명과 괄호 사이에는 공백을 쓰지 않는다. 
+
+```php
+public function sampleFunction($a, $b = null)
+{
+    if ($a === $b) {
+        bar();
+    } elseif ($a > $b) {
+        $foo->bar($arg1);
+    }
+}
+```
+
+- 인수 목록은 쉼표 뒤에 공백이 와야한다.
+- default 값을 가지는 인수는 인수목록의 마지막에 위치한다.
+
+```php
+<?php
+namespace Vendor\Package;
+
+class ClassName
+{
+    public function foo($arg1, &$arg2, $arg3 = [])
+    {
+        // method body
+    }
+}
+```
+
+### 1.3 괄호
+
+- class 구문의 여는 괄호는 다음 줄에 쓰고, 닫는 괄호는 본문 다음 줄에 쓴다.  
+- 메소드 구문의 여는 괄호는 다음 줄에 쓰고, 닫는 괄호는 본문 맨 끝에서 다음 줄에 쓴다.  
+
+
+### 1.4 예약어와 true/false/null
+
+- global, const, var 등의 [예약어](http://php.net/manual/en/reserved.keywords.php)와 true,false,null등은 반드시 소문자로 작성한다.
+- public, private, protected 와 같은 가시성 키워드는 모든 property와 method에서 반드시 선언되어야 한다.
+- abtract, final은 가시성 키워드 이전에 선언되어야 한다. 
+- static은 반드시 가시성 키워드 뒤에 선언되어야 한다.
+
+```php
+abstract class ClassName
+{
+    protected static $foo;
+
+    abstract protected function zim();
+
+    final public static function bar()
+    {
+        // method body
+    }
+}
+```
+
+### 1.5 namespace와 class
+
+- namespace 선언 다음에는 빈 줄이 하나 있어야 한다.
+- use 선언 다음에는 빈 줄이 하나 있어야 한다. 
+
+```php
+namesapce Vender\Package;
+
+use FooClass;
+use BarClass as Bar;
+use OhterVender\OtherPackage\BazClass;
+
+// ... additinal PHP code ...
+```
+
+- class 이름은 반드시 첫 글자를 대문자로 한다.  
+- class 내 상수는 모두 대문자로 하고 밑줄을 구분 기호로 해서 선언한다.  
+- class 내 메소드 이름은 camelCase를 사용한다. 
+- 메소드, property의 이름을 밑줄로 시작하면 안된다.
+
+
+
