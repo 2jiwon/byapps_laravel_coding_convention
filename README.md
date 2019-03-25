@@ -110,4 +110,33 @@ use OhterVender\OtherPackage\BazClass;
 - 메소드, property의 이름을 밑줄로 시작하면 안된다.
 
 
+## 2. Laravel Best Practice 문서 참고 사항  
+
+[Laravel best practice 문서 중 네이밍 규칙 부분을 발췌](https://github.com/xotrs/laravel-best-practices#라라벨-네이밍-규칙을-따릅니다)
+
+| 항목                             | 방식                         | 좋은 예                               | 나쁜 예                                                  |
+|----------------------------------|------------------------------|---------------------------------------|----------------------------------------------------------|
+| Controller                       | 단수형                       | ArticleController                     | ~~ArticlesController~~                                   |
+| Route                            | 복수형                       | articles/1                            | ~~article/1~~                                            |
+| Named route                      | 온점 표기와 snake_case       | users.show_active                     | ~~users.show-active, show-active-users~~                 |
+| Model                            | 단수형                       | User                                  | ~~Users~~                                                |
+| hasOne or belongsTo relationship | 단수형                       | articleComment                        | ~~articleComments~~   ~~article_comment~~                |
+| All other relationships          | 복수형                       | articleComments                       | ~~articleComment~~   ~~article_comments~~                |
+| Table                            | 복수형                       | article_comments                      | ~~article_comment~~   ~~articleComments~~                |
+| Pivot table                      | 알파벳 순서로 단수형 모델명  | article_user                          | ~~user_article~~   ~~articles_users~~                    |
+| Table column                     | 모델명 없이 snake_case       | meta_title                            | ~~MetaTitle~~   ~~article_meta_title~~                   |
+| Model property                   | snake_case                   | $model->created_at                    | ~~$model->createdAt~~                                    |
+| Foreign key                      | 뒤에 id를 붙인 단수형 모델명 | article_id                            | ~~ArticleId~~   ~~id_article~~   ~~articles_id~~         |
+| Method                           | camelCase                    | getAll                                | ~~get_all~~                                              |
+| Method in resource controller    | * 별도 테이블 참조           |                                       |                                                          |
+| Method in test class             | camelCase                    | testGuestCannotSeeArticle             | ~~test_guest_cannot_see_article~~                        |
+| Variable                         | camelCase                    | $articlesWithAuthor                   | ~~$articles_with_author~~                                |
+| Collection                       | 설명식으로, 복수형           | $activeUsers = User::active()->get()  | ~~$active, $data~~                                       |
+| Object                           | 설명식으로, 단수형           | $activeUser = User::active()->first() | ~~$users, $obj~~                                         |
+| Config and language files index  | snake_case                   | articles_enabled                      | ~~ArticlesEnabled; articles-enabled~~                    |
+| View                             | snake_case                   | show_filtered.blade.php               | ~~showFiltered.blade.php~~   ~~show-filtered.blade.php~~ |
+| Config                           | snake_case                   | google_calendar.php                   | ~~googleCalendar.php~~   ~~google-calendar.php~~         |
+| Contract (interface)             | 형용사형 또는 명사형         | Authenticatable                       | ~~AuthenticationInterface~~ ~~IAuthentication~~          |
+| Trait                            | 형용사형                     | Notifiable                            | ~~NotificationTrait~~                                    |
+
 
