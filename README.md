@@ -8,6 +8,9 @@
 3. [PHP Standards Recommendations](https://www.php-fig.org/psr/)
 4. [PSR-1 Basic Coding Standard 한글 번역](https://ujuc.github.io/2018/11/17/psr-1:_basic_coding_standard/)
 5. [PSR-2 Coding Style Guide 한글 번역](https://ujuc.github.io/2019/02/05/psr-2:_coding_style_guide/)
+6. [Laravel Best Practice](https://github.com/alexeymezenin/laravel-best-practices)
+7. [Laravel Best Practice 한글 번역](https://github.com/xotrs/laravel-best-practices)
+
 
 ---
 
