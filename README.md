@@ -138,5 +138,16 @@ use OhterVender\OtherPackage\BazClass;
 | Config                           | snake_case                   | google_calendar.php                   | ~~googleCalendar.php~~   ~~google-calendar.php~~         |
 | Contract (interface)             | 형용사형 또는 명사형         | Authenticatable                       | ~~AuthenticationInterface~~ ~~IAuthentication~~          |
 | Trait                            | 형용사형                     | Notifiable                            | ~~NotificationTrait~~                                    |
+- resource controller 테이블  
+
+| Verb      | URI                  | Action  | Route Name     |
+|-----------|----------------------|---------|----------------|
+| GET       | /photos              | index   | photos.index   |
+| GET       | /photos/create       | create  | photos.create  |
+| POST      | /photos              | store   | photos.store   |
+| GET       | /photos/{photo}      | show    | photos.show    |
+| GET       | /photos/{photo}/edit | edit    | photos.edit    |
+| PUT/PATCH | /photos/{photo}      | update  | photos.update  |
+| DELETE    | /photos/{photo}      | destroy | photos.destroy |
 
 
