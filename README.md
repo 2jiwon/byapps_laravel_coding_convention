@@ -25,7 +25,8 @@
 
 ### 1.1 파일 
 
-- 파일은 BOM(Byte Order Mark)없는 UTF-8 인코딩을 사용한다.  
+- 파일은 BOM(<sup>Byte Order Mark</sup> 문서 맨 앞에 보이지않는 특정 바이트를 넣어 인코딩방식을 알아내는 방법.[참조](http://madalla.kr/bbs/board.php?bo_table=data_etc&wr_id=50&sca=php&page=1))없는 UTF-8 인코딩을 사용한다.  
+  + Windows의 메모장, Dreamweaver, Editor Plus 등에서 파일 생성시 인코딩 방식이 UTF-8+가 아닌 UTF-8인지 확인
 - PHP만 포함된 파일에서는 닫는 태그(?>)는 사용하지 않는다.  
 - 파일은 반드시 하나의 빈 줄로 끝나야 한다.
 - namespace, class는 오토로딩 표준을 따른다.  
@@ -35,17 +36,18 @@
 - 들여쓰기는 탭이 아닌 공백 4칸을 사용한다.
 - 줄 길이는 80자 이하를 권장한다.
 - if, elseif 같은 제어 구문은 제어문 뒤에 공백 1개를 두고 괄호 안에 조건문을 기술한다.
-- 제어구문의 여는 괄호는 제어문과 같은 줄에 위치하고, 닫는 괄호는 본문 다음에 위치한다.
 - 함수나 메소드를 호출할 때는 함수명, 메소드명과 괄호 사이에는 공백을 쓰지 않는다. 
 
 ```php
+                // 함수명, 메소드명과 괄호 사이에는 공백 없음
 public function sampleFunction($a, $b = null)
 {
-    if ($a === $b) {
+// 들여쓰기는 공백 4칸 
+    
+    // 제어구문 뒤에 공백 1칸 쓰고 괄호
+    if ($a === $b) { 
         bar();
-    } elseif ($a > $b) {
-        $foo->bar($arg1);
-    }
+    } 
 }
 ```
 
@@ -58,9 +60,9 @@ namespace Vendor\Package;
 
 class ClassName
 {
+               // 인수 목록은 쉼표 뒤에 공백  // default 값을 가지는 인수는 목록의 마지막에.
     public function foo($arg1, &$arg2, $arg3 = [])
     {
-        // method body
     }
 }
 ```
@@ -69,7 +71,27 @@ class ClassName
 
 - class 구문의 여는 괄호는 다음 줄에 쓰고, 닫는 괄호는 본문 다음 줄에 쓴다.  
 - 메소드 구문의 여는 괄호는 다음 줄에 쓰고, 닫는 괄호는 본문 맨 끝에서 다음 줄에 쓴다.  
+- 제어구문의 여는 괄호는 제어문과 같은 줄에 위치하고, 닫는 괄호는 본문 다음에 위치한다.
 
+```php
+<?php
+namespace Vendor\Package;
+
+class ClassName
+{   // class 구문의 여는 괄호는 class 다음 줄에
+
+    public function foo($arg1, &$arg2, $arg3 = [])
+    {  // 메소드 구문의 여는 괄호는 다음 줄에
+        if ($a === $b) {    // 여는 괄호는 제어문과 같은 줄에 위치
+            bar();
+        } elseif ($a > $b) {
+            $foo->bar($arg1);
+        } // 닫는 괄호는 본문 다음 줄에 위치
+    } // 메소드 구문의 닫는 괄호는 본문 맨 끝에서 다음 줄에 
+
+
+} //class 구문의 닫는 괄호는 본문 다음 줄에
+```
 
 ### 1.4 예약어와 true/false/null
 
@@ -81,13 +103,16 @@ class ClassName
 ```php
 abstract class ClassName
 {
+    // 가시성 키워드는 모든 property와 method에서 반드시 선언
     protected static $foo;
 
+    // abstract, final은 가시성 키워드 이전에 선언
     abstract protected function zim();
 
+    // static은 가시성 키워드 뒤에 선언
     final public static function bar()
     {
-        // method body
+       const SOMETHING = true;  // 예약어와 true/false/null은 반드시 소문자로 
     }
 }
 ```
@@ -141,7 +166,15 @@ use OhterVender\OtherPackage\BazClass;
 | Config                           | snake_case                   | google_calendar.php                   | ~~googleCalendar.php~~   ~~google-calendar.php~~         |
 | Contract (interface)             | 형용사형 또는 명사형         | Authenticatable                       | ~~AuthenticationInterface~~ ~~IAuthentication~~          |
 | Trait                            | 형용사형                     | Notifiable                            | ~~NotificationTrait~~                                    |
-- resource controller 테이블  
+ 
+- Laravel Best Practice에는 없고 별도로 추가
+
+| 항목                             | 방식                         | 좋은 예                               | 나쁜 예                                                  |
+|----------------------------------|------------------------------|---------------------------------------|----------------------------------------------------------|
+| Factory                          | StudlyCase, 단수형           | PostFactory                           |                                                          |
+| Seeder                           | 대상 테이블이름 뒤에 Seeder  | UsersTableSeeder                      |                                                          |
+
+- resource controller 테이블
 
 | Verb      | URI                  | Action  | Route Name     |
 |-----------|----------------------|---------|----------------|
